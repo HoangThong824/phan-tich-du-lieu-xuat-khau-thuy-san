@@ -82,3 +82,25 @@ plt.ylim(-1, 1)
 plt.xticks(df['Year'].unique(), rotation=45)
 plt.legend()
 save_chart('4_chi_so_RSCA.png')
+# --- BIỂU ĐỒ 5: CHỈ SỐ CHUYÊN MÔN HÓA (SPEC) ---
+plt.figure(figsize=(12, 6))
+
+# Vẽ đường biểu diễn SPEC cho 2 nước
+sns.lineplot(data=df, x='Year', y='SPEC', hue='Country', palette=colors, 
+             linewidth=3, marker='^', markersize=8)
+
+# Thêm các đường ngưỡng tham chiếu
+plt.axhline(0, color='black', linestyle='-', alpha=0.5) # Đường cân bằng X=M
+plt.axhline(1, color='gray', linestyle='--', alpha=0.7, label='Chuyên môn hóa XK tuyệt đối (1)')
+
+plt.title('CHỈ SỐ CHUYÊN MÔN HÓA THƯƠNG MẠI (SPEC)', fontweight='bold')
+plt.ylabel('Chỉ số SPEC')
+plt.xlabel('Năm')
+
+# Thiết lập giới hạn trục y để thấy rõ sự biến động (thường từ -1 đến 1)
+plt.ylim(0, 1.1) 
+
+plt.xticks(df['Year'].unique(), rotation=45)
+plt.legend(loc='lower left')
+
+save_chart('5_chi_so_SPEC.png')
